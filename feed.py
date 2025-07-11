@@ -11,7 +11,7 @@ TAK_PROTO = os.getenv("TAK_PROTO", "0")
 PYTAK_TLS_CLIENT_CERT = os.getenv("PYTAK_TLS_CLIENT_CERT")
 PYTAK_TLS_CLIENT_KEY = os.getenv("PYTAK_TLS_CLIENT_KEY")
 PYTAK_TLS_DONT_VERIFY = os.getenv("PYTAK_TLS_DONT_VERIFY", "1")
-COT_STALE = int(os.getenv("COT_STALE", "30"))
+COT_STALE = int(os.getenv("COT_STALE", "120"))
 
 
 def weather2cot(sensor):
@@ -72,7 +72,7 @@ class sendWeather(pytak.QueueWorker):
                 data += weather2cot(sensor)
                 self._logger.info("Sent:\n%s\n", data.decode())
             await self.handle_data(data)
-            await asyncio.sleep(COT_STALE)
+            await asyncio.sleep(30)
 
 
 async def main():
