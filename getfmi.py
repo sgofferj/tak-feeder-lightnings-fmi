@@ -4,9 +4,9 @@ from datetime import datetime as dt, timezone as tz, timedelta
 bbox = "18,60,32,71"
 
 
-def getLightnings(stale):
+def getLightnings(history):
     end_time = dt.now(tz.utc)
-    start_time = end_time - timedelta(seconds=stale)
+    start_time = end_time - timedelta(seconds=history)
     start_time = start_time.strftime("%Y-%m-%dT%H:%M:%SZ")
     end_time = end_time.strftime("%Y-%m-%dT%H:%M:%SZ")
     tmp_list = []

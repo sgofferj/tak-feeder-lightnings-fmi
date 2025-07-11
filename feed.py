@@ -67,7 +67,7 @@ class sendWeather(pytak.QueueWorker):
         """Run the loop for processing or generating pre-CoT data."""
         while 1:
             data = bytes()
-            sensors = fmi.getLightnings(COT_STALE)
+            sensors = fmi.getLightnings(HISTORY)
             for sensor in sensors:
                 data += weather2cot(sensor)
                 self._logger.info("Sent:\n%s\n", data.decode())
