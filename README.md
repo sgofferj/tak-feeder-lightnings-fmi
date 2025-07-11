@@ -19,6 +19,7 @@ The following values are supported and can be provided either as environment var
 |----------|---------|---------|
 | COT_URL | empty | (mandatory) TAK server full URL, e.g. ssl://takserver:8089 |
 | HISTORY | 120 | (optional) Wanted lightning history in seconds. Values less than 120 seconds don't get any results. |
+| UPDATE_INTERVAL | 30 | (optional) Interval between data updates - how often should we get data? |
 | PYTAK_TLS_CLIENT_CERT | empty | (mandatory for ssl) User certificate in PEM format |
 | PYTAK_TLS_CLIENT_KEY | empty | (mandatory for ssl) User certificate key file (xxx.key) |
 | PYTAK_TLS_DONT_VERIFY | 1 | (optional) Verify the server certificate (0) or not (1) |

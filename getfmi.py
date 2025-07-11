@@ -15,8 +15,17 @@ def getLightnings(history):
         args=["starttime=" + start_time, "endtime=" + end_time, "bbox=" + bbox],
     )
     for a in range(0, len(obs.latitudes)):
+        uid = uid = (
+            "lightning-"
+            + obs.times[a].strftime("%Y%m%dT%H%M%SZ")
+            + "-"
+            + str(obs.longitudes[a])
+            + "-"
+            + str(obs.latitudes[a])
+        )
         tmp_list.append(
             {
+                "uid": uid,
                 "time": obs.times[a],
                 "lon": obs.longitudes[a],
                 "lat": obs.latitudes[a],

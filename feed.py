@@ -1,5 +1,4 @@
 import os
-import uuid
 import asyncio
 import xml.etree.ElementTree as ET
 from configparser import ConfigParser
@@ -12,10 +11,11 @@ PYTAK_TLS_CLIENT_CERT = os.getenv("PYTAK_TLS_CLIENT_CERT")
 PYTAK_TLS_CLIENT_KEY = os.getenv("PYTAK_TLS_CLIENT_KEY")
 PYTAK_TLS_DONT_VERIFY = os.getenv("PYTAK_TLS_DONT_VERIFY", "1")
 HISTORY = int(os.getenv("HISTORY", "120"))
+UPDATE_INTERVAL = int(os.getenv("UPDATE_INTERVAL", "30"))
 
 
 def weather2cot(sensor):
-    uid = "lightning-" + str(uuid.uuid4())
+    uid = sensor["uid"]
     root = ET.Element("event")
     root.set("version", "2.0")
     root.set("type", "b-w-A-S-T-L")
@@ -23,7 +23,7 @@ def weather2cot(sensor):
     root.set("how", "m-c")
     root.set("time", pytak.cot_time())
     root.set("start", pytak.cot_time())
-    root.set("stale", pytak.cot_time(30))
+    root.set("stale", pytak.cot_time(UPDATE_INTERVAL + 15))
 
     pt_attr = {
         "lat": f'{sensor["lat"]}',
@@ -72,7 +72,7 @@ class sendWeather(pytak.QueueWorker):
                 data += weather2cot(sensor)
                 self._logger.info("Sent:\n%s\n", data.decode())
             await self.handle_data(data)
-            await asyncio.sleep(30)
+            await asyncio.sleep(UPDATE_INTERVAL)
 
 
 async def main():
