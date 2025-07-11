@@ -1,9 +1,8 @@
-** CURRENTLY TESTING - USE WITH CAUTION **
 
-[![Build and publish the container image](https://github.com/sgofferj/tak-feeder-weather-fmi/actions/workflows/actions.yml/badge.svg)](https://github.com/sgofferj/tak-feeder-weather-fmi/actions/workflows/actions.yml)
+[![Build and publish the container image](https://github.com/sgofferj/tak-feeder-lightnings-fmi/actions/workflows/actions.yml/badge.svg)](https://github.com/sgofferj/tak-feeder-lightnings-fmi/actions/workflows/actions.yml)
 
-# tak-feeder-weather-fmi
-Get latest weather observation data from the Finnish Meteorological Institute and feed them to a TAK server
+# tak-feeder-lightnings-fmi
+Get latest lightning observation data from the Finnish Meteorological Institute and feed them to a TAK server
 
 (C) 2025 Stefan Gofferje
 
