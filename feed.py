@@ -11,7 +11,7 @@ TAK_PROTO = os.getenv("TAK_PROTO", "0")
 PYTAK_TLS_CLIENT_CERT = os.getenv("PYTAK_TLS_CLIENT_CERT")
 PYTAK_TLS_CLIENT_KEY = os.getenv("PYTAK_TLS_CLIENT_KEY")
 PYTAK_TLS_DONT_VERIFY = os.getenv("PYTAK_TLS_DONT_VERIFY", "1")
-COT_STALE = int(os.getenv("COT_STALE", "120"))
+HISTORY = int(os.getenv("HISTORY", "120"))
 
 
 def weather2cot(sensor):
@@ -23,7 +23,7 @@ def weather2cot(sensor):
     root.set("how", "m-c")
     root.set("time", pytak.cot_time())
     root.set("start", pytak.cot_time())
-    root.set("stale", pytak.cot_time(COT_STALE))
+    root.set("stale", pytak.cot_time(30))
 
     pt_attr = {
         "lat": f'{sensor["lat"]}',
