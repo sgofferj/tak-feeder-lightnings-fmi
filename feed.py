@@ -23,7 +23,7 @@ def weather2cot(sensor):
     root.set("how", "m-c")
     root.set("time", pytak.cot_time())
     root.set("start", pytak.cot_time())
-    root.set("stale", pytak.cot_time(UPDATE_INTERVAL + 15))
+    root.set("stale", pytak.cot_time(UPDATE_INTERVAL * 2))
 
     pt_attr = {
         "lat": f'{sensor["lat"]}',
