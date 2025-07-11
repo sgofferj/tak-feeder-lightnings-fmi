@@ -18,7 +18,7 @@ The following values are supported and can be provided either as environment var
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | COT_URL | empty | (mandatory) TAK server full URL, e.g. ssl://takserver:8089 |
-| COT_STALE | 30 | (optional) | Time between polls and stale time of the lightning markers in seconds |
+| COT_STALE | 30 | (optional) Time between polls and stale time of the lightning markers in seconds |
 | PYTAK_TLS_CLIENT_CERT | empty | (mandatory for ssl) User certificate in PEM format |
 | PYTAK_TLS_CLIENT_KEY | empty | (mandatory for ssl) User certificate key file (xxx.key) |
 | PYTAK_TLS_DONT_VERIFY | 1 | (optional) Verify the server certificate (0) or not (1) |
