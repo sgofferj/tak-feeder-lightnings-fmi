@@ -12,13 +12,23 @@ Licensed under the GNU General Public License V3 or later.
 The Finnish Meteorological Institute provides free API access to the weather data from their sensor network. This container connects to their WFS server,
 downloads the sensor data and sends it to a TAK server. Note that the lightning data is not realtime but about 2 minutes delayed.
 
+The lightning strikes are displayed as spot icons with colors depending on the age of the strike:
+
+| Age | Color |
+|-----|-------|
+| <5min | white |
+| >=5min | yellow |
+| >=15min | orange |
+| >=30min | red    |
+| >=45min | dark red | 
+
 ## Configuration
 The following values are supported and can be provided either as environment variables or through an .env-file.
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | COT_URL | empty | (mandatory) TAK server full URL, e.g. ssl://takserver:8089 |
-| HISTORY | 120 | (optional) Wanted lightning history in seconds. Values less than 120 seconds don't get any results. |
+| HISTORY | 300 | (optional) Wanted lightning history in seconds. Values less than 120 seconds don't get any results. |
 | UPDATE_INTERVAL | 30 | (optional) Interval between data updates - how often should we get data? |
 | PYTAK_TLS_CLIENT_CERT | empty | (mandatory for ssl) User certificate in PEM format |
 | PYTAK_TLS_CLIENT_KEY | empty | (mandatory for ssl) User certificate key file (xxx.key) |
