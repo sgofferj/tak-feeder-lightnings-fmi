@@ -12,7 +12,7 @@ Licensed under the GNU General Public License V3 or later.
 The Finnish Meteorological Institute provides free API access to the weather data from their sensor network. This container connects to their WFS server,
 downloads the sensor data and sends it to a TAK server. Note that the lightning data is not realtime but about 2 minutes delayed.
 
-The lightning strikes are displayed as spot icons with colors depending on the age of the strike:
+The lightning strikes are displayed as thunderstorm icons with colors depending on the age of the strike:
 
 | Age | Color |
 |-----|-------|
@@ -21,6 +21,8 @@ The lightning strikes are displayed as spot icons with colors depending on the a
 | >=15min | orange |
 | >=30min | red    |
 | >=45min | dark red | 
+
+The stale time is set to 2x UPDATE_INTERVAL (see below)
 
 ## Configuration
 The following values are supported and can be provided either as environment variables or through an .env-file.

@@ -36,12 +36,12 @@ def weather2cot(sensor):
     uid = sensor["uid"]
     root = ET.Element("event")
     root.set("version", "2.0")
-    # That should be "b-w-A-S-T-L" but ATAK seems to only displau the spot marker if the type is "b-m-p-s-m"
-    root.set("type", "b-m-p-s-m")
+    # That should be "b-w-A-S-T-L" but ATAK apparently doesn't stale out sensor reports
+    root.set("type", "a-o-G")
     root.set("uid", uid)
     root.set("how", "m-c")
     root.set("time", pytak.cot_time())
-    root.set("start", timestart.strftime("%Y-%m-%dT%H:%M:%S.000000Z"))
+    root.set("start", pytak.cot_time())
     root.set("stale", pytak.cot_time(staleseconds))
 
     pt_attr = {
@@ -65,7 +65,7 @@ def weather2cot(sensor):
         "\nWeather observations: Finnish Meteorological Institute open data, CC-BY 4.0"
     )
 
-    iconsetpath = f"COT_MAPPING_SPOTMAP/b-m-p-s-m/{argb}"
+    iconsetpath = "ad78aafb-83a6-4c07-b2b9-a897a8b6a38f/Shapes/thunderstorm.png"
     usericon = ET.Element("usericon")
     usericon.set("iconsetpath", iconsetpath)
 
@@ -97,7 +97,7 @@ class sendWeather(pytak.QueueWorker):
             sensors = fmi.getLightnings(HISTORY)
             for sensor in sensors:
                 data += weather2cot(sensor)
-                # self._logger.info("Sent:\n%s\n", data.decode())
+                self._logger.info("Sent:\n%s\n", data.decode())
             await self.handle_data(data)
             await asyncio.sleep(UPDATE_INTERVAL)
 
