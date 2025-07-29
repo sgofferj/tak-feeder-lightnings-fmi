@@ -97,7 +97,7 @@ class sendWeather(pytak.QueueWorker):
             sensors = fmi.getLightnings(HISTORY)
             for sensor in sensors:
                 data += weather2cot(sensor)
-                self._logger.info("Sent:\n%s\n", data.decode())
+                # self._logger.info("Sent:\n%s\n", data.decode())
             await self.handle_data(data)
             await asyncio.sleep(UPDATE_INTERVAL)
 

@@ -1,8 +1,6 @@
 from fmiopendata.wfs import download_stored_query
 from datetime import datetime as dt, timezone as tz, timedelta
 
-bbox = "18,60,32,71"
-
 
 def getLightnings(history):
     end_time = dt.now(tz.utc)
@@ -12,7 +10,7 @@ def getLightnings(history):
     tmp_list = []
     obs = download_stored_query(
         "fmi::observations::lightning::multipointcoverage",
-        args=["starttime=" + start_time, "endtime=" + end_time, "bbox=" + bbox],
+        args=["starttime=" + start_time, "endtime=" + end_time],
     )
     for a in range(0, len(obs.latitudes)):
         uid = uid = (
